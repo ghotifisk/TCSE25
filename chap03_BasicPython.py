@@ -1,4 +1,4 @@
-# Page.19 Rice and Chessboard Problem
+# Page 19 Rice and Chessboard Problem
 
 s = 0; n = 1; fv = 1
 while n < 65:
@@ -37,7 +37,7 @@ for i in range(1, n+1): sm += i
 print(f"The sum is {sm}")  
 
 
-# Page 28 Example 3.3 Collatz
+# Page 28 Example 3.3 Collatz Problem
 
 n = 100  # input
 while n > 1:
@@ -98,7 +98,7 @@ def g(x): return 4*x*(1 - x)
 print(vmax(g,7))  # Out: 0.9795918367346939
 
 
-# Page 36  Example 3.7 Function as Return Value
+# Page 36 Example 3.7 Function as Return Value
 
 def ddx(f):
     h = 1.e-6
@@ -149,7 +149,7 @@ testList = [4, 5, 7, 3, 8, 3]
 print(qsort(testList))  # out: [3, 3, 4, 5, 7, 8]
 
 
-# Pages 38, 39 Examples 3.14, 3.15  String Formatting, Interpolation
+# Page 38 Examples 3.14, 3.15 String Formatting, Interpolation
 
 n = 1
 fstr = f"{n} divided by 3 is {n/3}"
@@ -159,7 +159,7 @@ fstr = f"{n} divided by 3 is {n/3 :.4}"
 print(fstr)
 # Out: 1 divided by 3 is 0.3333
 
-# Page 39, Example 3.16 Numeric Formatting
+# Page 39 Example 3.16 Number Formatting
 
 print(f"|{12.34567 :.3f}|")   # Out: '|12.346|'
 print(f"|{12.34567 :7.3f}|")  # Out: '| 12.346|'
@@ -172,7 +172,7 @@ wf.write('The parrot is dead!\n')
 wf.write('It is only resting.')
 wf.close()
 
-# Page 40 Readiing Strings
+# Page 40 Reading Strings
 
 rf = open('parrot.txt', 'r')
 fstr = rf.read()
@@ -207,7 +207,7 @@ in_tbl = load(frb)  # read
 print(in_tbl)
 
      
-# Page 43. Example 3.19 Fraction Class
+# Page 43 Example 3.19 Fraction Class
 
 class Fraction:
     def __init__(self, num, den):  # initialization
@@ -230,7 +230,7 @@ print(c.isEqualTo(d))  # Out: True
 # print(c = d) 
 
 
-# Pages 44-46 Example 3.20  Polynomial Class
+# Page 44 Example 3.20  Polynomial Class
 
 class Polynomial:
     def __init__(self, coeff):  # data initialization
@@ -292,7 +292,7 @@ r = Polynomial([6,7,8,9])
 print(p*(q + r) == p*q + p*r)  # Out: True 
 
         
-# Pages 47, 48 Parabola Class
+# Page 47 Parabola Class
       
 class Parabola(Polynomial):   # subclass, needs code above
     def __init__(self, coefficients):  
@@ -302,8 +302,7 @@ class Parabola(Polynomial):   # subclass, needs code above
             else: super().__init__(coefficients)     
     def roots(self): 
         print('To be implemented')
-        return
-        
+        return        
     def __add__(self, q): 
         l = [0, 0, 0]
         for i in range(3): l[i] += self.coeff[i] + q.coeff[i]
