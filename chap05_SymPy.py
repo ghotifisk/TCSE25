@@ -4,7 +4,7 @@ import scipy, sympy
 scipy.sqrt(8)  # Out: 2.8284271247461903
 sympy.sqrt(8)  # Out: 2*sqrt(2)
 
-from sympy import *  # from here on always assumed
+from sympy import *  # always assumed from now on
 init_printing()
 
 
@@ -21,7 +21,7 @@ type(x)  # Out: sympy.core.symbol.Symbol
 
 sqrt(8).evalf(50)
 
-x, y, z = symbols('x y z')  # note lower-case initial letter s 
+x, y, z = symbols('x y z')  # always assumed from now on
 
 
 # Page 97
@@ -115,13 +115,10 @@ plt.plot(x, f(x))
 
 # Page 101 Equations 
 
-from sympy import *
 x = Symbol('x')
 solve(Eq(x**2, 1), x)  # Out: [-1, 1]
 solve(x**2 - 1, x)
 solve(x**2 - 1)
-
-x = Symbol('x')
 solve(x**4 - 1, x)  # Out: ￼[‐1, 1, ‐I, I] 
 x = Symbol('x', real=True)
 solve(x**4 - 1, x)  # Out: [‐1, 1]  
@@ -129,6 +126,7 @@ solve(x**4 - 1, x)  # Out: [‐1, 1]
 
 # Page 102 Equation Systems 
 
+x = Symbol('x')
 eqn1 = Eq(x + 5*y, 2); eqn2 = Eq(-3*x + 6*y, 15)
 sol = solve([eqn1, eqn2], [x,y]); sol  # Out: {x:-3 1, y: 1}  
 eqn1.lhs.subs(sol) == eqn1.rhs         # Out: True
@@ -279,7 +277,7 @@ integrate(x**3, (x, -1, 1))   # definite integral
 integrate(exp(-x**2 - y**2), (x, -oo, oo), (y, -oo, oo))  # Out: pi
 
 
-# Page 109  Series Expansion
+# Page 109 Series Expansion
 
 series(cos(x), x, pi, 4)
 series(exp(x), x)
