@@ -2,4 +2,4 @@
 
 This repository plans to present the source code discussed in the 2nd edition of the  text [*Introduction to the Tools of Scientific Computing*](https://link.springer.com/book/10.1007/978-3-031-16972-4) by Einar Smith, published in 2022 as  part of the Springer-Verlag book series *Texts in Computational Science and Engineering* (TCSE, volume 25).
 
-The content in this preliminary version so far covers the  Python programs in Chapters 3, 4, 5. 
+The content in this preliminary version so far covers the  Python programs in Chapters 3, 4, 5 and the C programs in Chapter 6 
