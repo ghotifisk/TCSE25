@@ -126,6 +126,7 @@ int main() {
            omp_get_thread_num(), omp_get_num_threads()); } }
            
            
+           
 (* Page 299 Example 13.5 OMP Broadcast, Naive *)
 
 #include <stdio.h>
@@ -137,6 +138,7 @@ int main() {
       printf("%d ", ans); }
     printf("\n"); }
     
+       
 (* Page 299, 300 Example 13.5, 13.6 OMP Broadcast, "barrier" Directive *)
 
 #include <stdio.h>
@@ -272,16 +274,3 @@ int main() {
                MPI_SUM, 0, MPI_COMM_WORLD);
     if (rank == 0) { printf("%f\n", pi); }
     MPI_Finalize(); }
-
-            
-
-    
-
-
-
-    
-    
-
-    
-
-           
