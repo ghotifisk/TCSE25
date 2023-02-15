@@ -63,7 +63,6 @@ float diff_quot(float f (float), float x) {  // outside main
     float h = 1.e-6;
     return (f(x+h) - f(x)) / h; }
 float f_ex(float x) { return 4*x*(1 - x); }  // outside  main
-
 printf("%f\n", diff_quot(f_ex, 0.5));        // in main
 
 
@@ -83,8 +82,7 @@ int arr2[] = {0, 1, 2};
 float norm(int n, float v[]) {
     float s = 0;
     for (int i = 0; i < n; i++) s += v[i]*v[i];
-    return sqrt(s); }
-    
+    return sqrt(s); }   
 float v[] = {0, 3, 4};
 printf("%f\n", norm(3,v));  // Out: 5.000000
 
@@ -111,8 +109,7 @@ float det(int n, float A[][n]) {
                 A_sub[i][j] = (j < col) ? A[i+1][j] : A[i+1][j+1];
         float s = A[0][col] * det(n-1, A_sub);  // recursive 
         sum += ( col % 2 == 0 ) ? s : -s; }     // expansion
-    return sum; }
-    
+    return sum; }    
 float A[3][3] = { {1, 2, 3}, {1, 1, 1}, {3, 3, 1} };  // in main
 printf("%f\n", det(3, A));
 
@@ -121,7 +118,6 @@ printf("%f\n", det(3, A));
 
 int a;
 printf("%p\n", &a);  // %p is the place holder symbol for pointer
-
 int* p;  // p can hold the address of an int number
 
 
@@ -144,7 +140,6 @@ printf("%d\n", *p);    // Out: 42
 // Page 131 Example 6.11 Declare Array as Pointer
 
 #include <stdlib.h>                  // in preamble 
-
 int n =3;                            // in main
 int* arr = malloc(sizeof(int) * n);  
 
@@ -166,7 +161,6 @@ free(A);
 struct { int num; int den; } a;
 a.num = 3; a.den = 4;
 printf("%d, %d\n", a.num, a.den);  // Out: 3, 4
-
 struct { int num; int den; } a = {.num = 3, .den = 4};
 
 
@@ -218,7 +212,6 @@ void append(vec* v, node* npt) {
         v->last = npt;}
     else (v->last)->next = npt;
     v->last = npt; }
-
 int arr[] = {0, 2, 0, 0, 8, 10, 0, 14, 16, 18};   
 vec* v = create_vector();
 for (int i = 0; i < 10; i++) {
