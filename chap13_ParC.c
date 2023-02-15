@@ -125,8 +125,7 @@ int main() {
     { printf("Hello World from thread number %d of %d\n",
            omp_get_thread_num(), omp_get_num_threads()); } }
            
-           
-           
+                     
 (* Page 299 Example 13.5 OMP Broadcast, Naive *)
 
 #include <stdio.h>
