@@ -30,11 +30,11 @@ comm.send(22, dest = comm.size - 1 - comm.rank)
 print(msg)
 
 
-# From now on always include
+# From now on always include:
 
 from mpi4py import MPI
 
-# and wherever needed 
+# and wherever needed: 
 
 size = MPI.COMM_WORLD.size
 rank = MPI.COMM_WORLD.rank

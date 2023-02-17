@@ -63,8 +63,8 @@ while t <= T:
     bc = DirichletBC(V, g, 'on_boundary')
     solve(a - L == 0, u_sol, bc)  
     u_n.assign(u_sol)             
-    t += h                        
-    
+    t += h  
+                             
 plot(u_n , mode="warp")
 from matplotlib.pyplot import show
 show()
@@ -92,8 +92,8 @@ for _ in range(25):
     diff = u.vector().get_local() - u_n.vector().get_local()
     d = norm(diff, ord=inf)
     if d < eps: break
-    u_n.assign(u) 
-    
+    u_n.assign(u)   
+      
 plot(u_n)  
 from matplotlib.pyplot import show
 show()
@@ -121,8 +121,8 @@ u_init = project(Constant(0), V)
 u.assign(u_init)
 problem = NonlinearVariationalProblem(F, u, bc, J)
 solver = NonlinearVariationalSolver(problem)
-solver.solve()  
-
+solver.solve() 
+ 
 plot(u)  
 from matplotlib.pyplot import show
 show()
@@ -161,7 +161,8 @@ a = inner(grad(u), grad(v))*dx + u*v*dx
 f = Expression('(1 + 2*pi*pi)*cos(pi*x[0])*cos(pi*x[1])', degree=1)
 L = f*v*dx  
 u = Function(V)
-solve(a == L, u)  
+solve(a == L, u)
+  
 plot(u, mode="warp") 
 from matplotlib.pyplot import show        
 show()

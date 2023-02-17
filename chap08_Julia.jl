@@ -1,6 +1,6 @@
 # Page 158 Example 8.2 Hello World
 
-println("Hello World")  # my first Julia program
+println("Hello World")  
 
 
 # Page 161 Example 8.3 Collatz Problem
@@ -12,9 +12,9 @@ println("reached 1")
 
 # Page 161 Example 8.4 Chessboard and Rice Problem
 
-grains = UInt64(0)    # max val 2^64-1 exceeds Int64 max
-fieldval = UInt64(0)  # similarly for max value 2^63 
-for fieldno in 1:64   # range 1 ... 64 incl lower and upper bounds
+grains = UInt64(0)    
+fieldval = UInt64(0)  
+for fieldno in 1:64   
     global fieldval = fieldno == 1 ? 1 : fieldval *= 2
     global grains += fieldval end
 println(grains)
@@ -22,28 +22,28 @@ println(grains)
 
 # Page 162 Example 8.5 Monte Carlo Method
 
-const samples = 10_000_000  # input
+const samples = 10_000_000  
 hits = 0
-for _ = 1 : samples  #  no counter variable  used in loop
+for _ = 1 : samples
     x, y  = rand(), rand()
     d = x*x + y*y
     if d <= 1 global hits += 1 end end
-println(4*(hits/samples))  # ans: 3.1416012
+println(4*(hits/samples))  
 
 
 # Page 163 Example 8.6 Factorial Function
 
-function factorial(n)  # computes the factorial 
+function factorial(n)   
     res = 1 
     for i = 1:n res *= i end
     return res end
-factorial(5)  # ans: 120
+factorial(5)  
 
 
 # Page 163 Example 8.7 Return Value Pair
 
 function swap(n,m) return (m,n) end
-swap(1,2)  # ans: (2, 1) 
+swap(1,2)  
 
 
 # Page 164 Example 8.8  Ackermann Function
@@ -63,7 +63,7 @@ fib(n) = (n == 1 || n == 2) ? 1 : fib(n-1) + fib(n-2)
 
 f(n) = n < 0 ? 22 : g(n); 
 g(n) = f(n-1);
-f(4)  # ans: 22
+f(4)  
 
 
 # Page 164 Example 8.11  Pointwise Derivative
@@ -72,8 +72,8 @@ f(4)  # ans: 22
 function ddx(f::Function, x::Float64)
     h = 1.e-14
     return (f(x+h) - f(x)) / h  end
-g(x) = 4x*(1 - x);  # test function 
-ddx(g, 0.5)         # ans: 0.0
+g(x) = 4x*(1 - x);  
+ddx(g, 0.5)         
 
 
 # Page 164 Example 8.12  Derivative Function
@@ -83,38 +83,38 @@ function ddx(f)
     h = 1.e-14
     function f_prime(x) return (f(x+h) - f(x)) / h end
     return f_prime end
-ddx(g)(0.5)       # ans: 0.0
+ddx(g)(0.5)       
 g_prime = ddx(g);
-g_prime(0.5)      # ans: 0.0
+g_prime(0.5)      
 
-ddx  # ans: ddx (generic function with 2 methods)
+ddx  
 
 
 # Page 168 Example 8.14 Mutating Function 
 
 function swap!(v) temp = v[1]; v[1] = v[2]; v[2] = temp end
 v = [1, 2]
-swap!(v); println(v)  # ans: [2, 1]
+swap!(v); println(v)  
 
 
 # Page 169 Example 8.15 Filtering
 
 v = collect(1: 5)
-filter(x -> x % 2 == 0, v)  # ans: [2, 4] 
-println(v)                  # ans: [1, 2, 3, 4, 5], v not modified
+filter(x -> x % 2 == 0, v)  
+println(v)                  
 filter!(x -> x % 2 == 0, v) 
-println(v)                  # ans: [2, 4], 'v' modified in-place
+println(v)                  
 
 
 # Page 169 Example 8.16 Sieve of Eratosthenes
 
 n = 30                  
 L = collect(2:n)        
-P = Int[]        #  empty integer list
+P = Int[]       
 while L != [] 
-    p = L[1]     # the smallest number still contained in L
-    push!(P, p)  # is appended to the end of P 
-    for i in L   # removes all multiples of p
+    p = L[1]     
+    push!(P, p) 
+    for i in L  
         if i % p == 0  filter!(x -> x != i, L) end end end
 println(P)
 
@@ -147,16 +147,16 @@ struct fract num::Int; den::Int end
 a = fract(3, 4); b = fract(1, 2)
 add(x::fract, y::fract) = 
     fract(x.num*y.den+x.den*y.num, x.den*y.den) 
-c = add(a,b)  # ans: fract(10, 8)
+c = add(a,b) 
 import Base: + 
 +(x::fract, y::fract) = 
     fract(x.num*y.den + x.den*y.num, x.den*y.den) 
 ans: + (generic function with 209 methods)
-a + b  # ans: fract(10, 8)
+a + b 
 import Base: ==
 ==(x::fract, y::fract) = x.num*y.den == x.den*y.num
-a == b            # ans: false
-b == fract(2, 4)  # ans: true
+a == b            
+b == fract(2, 4) 
 
 
 # Page 175 Linear Equations
@@ -164,8 +164,8 @@ b == fract(2, 4)  # ans: true
 A = [9. 3. -6. 12.; 3. 26. -7. -11.; 
     -6. -7. 9. 7.; 12. -11. 7. 65.]
 b = [ 18.;  11.;  3.;  73.]
-x = A \ b   #  solver
-println(x)  # ans: [1.000000, 1.0000000, 1.000000, 1.000000]
+x = A \ b   
+println(x)  
 
 
 # Page 176 Example 8.20 Conjugate Gradient
@@ -184,7 +184,7 @@ for _ in 1:n
     if sqrt(rs_new) < 1e-10 break end
     global p = r + (rs_new / rs_old)*p
     global rs_old = rs_new end
-println(x)  # ans: [1.000000, 1.0000000, 1.000000, 1.000000]
+println(x)
 
 
 # Page 178 Example 8.21 Poisson Matrix
@@ -195,7 +195,7 @@ function poisson(n::Int)
     w = ones(n-1)
     D = SymTridiagonal(v, -w) 
     sD = SymTridiagonal(zeros(n), w)
-    Id = Diagonal(ones(n))  # identity matrix
+    Id = Diagonal(ones(n))  
     A = kron(Id, D) + kron(sD, -Id) 
     return A end
 A = poisson(3)
@@ -203,8 +203,8 @@ A = poisson(3)
 
 # Page 178 Example 8.22 Sparse Poisson Matrix
 
-using SparseArrays  # loading module
-spA = sparse(A)     # converting poisson matrix above
+using SparseArrays  
+spA = sparse(A)     
 
 
 # Page 179 Example 8.23 Speed Comparison
@@ -212,28 +212,28 @@ spA = sparse(A)     # converting poisson matrix above
 n = 100
 A = poisson(n)
 b = ones(n*n)
-@elapsed A \ b    # ans: 3.548505505
+@elapsed A \ b    
 spA = sparse(A)
-@elapsed spA \ b  # ans: 0.021005501
+@elapsed spA \ b  
 
 
 # Page 179 Ordinary Differential Equations
 
-import Pkg;                       # Juila's packet manager                       
-Pkg.add("DifferentialEquations")  # only required once
-using DifferentialEquations       # required once in every session
+import Pkg;                                            
+Pkg.add("DifferentialEquations")  
+using DifferentialEquations       
 
 
 # Page 180  Example 8.24 Simple IVP
 
-dudx(u, p, x) = x - u  # note additional parameter p
-epts = (0.0, 5.0)      # interval given by tuple of boundary points
-u0 = 1.0               # initial value
+dudx(u, p, x) = x - u  
+epts = (0.0, 5.0)      
+u0 = 1.0               
 prob = ODEProblem(dudx, u0, epts)
 sol = solve(prob)
 Pkg.add("Plots")
 using Plots
-plot(sol, leg=false)  # no legend shown 
+plot(sol, leg=false)  
 plot!(sol.t, t-> t-1+2*exp(-t), seriestype=:scatter, leg=false)
 
 
@@ -266,7 +266,7 @@ function bc!(residual, u, p, x)
     residual[1] = u[1][1]        
     residual[2] = u[end][1] - 1 end
 bvp = TwoPointBVProblem(u!, bc!, [0, 0], bds)
-sol = solve(bvp, MIRK4(), dt=0.05);  # note: 'dt' with 't' required
+sol = solve(bvp, MIRK4(), dt=0.05); 
 plot(sol)
 
 
@@ -298,10 +298,10 @@ function poisson_solver(f::Function, g::Function, m::Int)
     x = y = range(0, stop=1, length=m)  
     h = 1/(m-1)
     u = zeros(m,m)
-    for i = 1:m, j = 1:m  # nested loops
+    for i = 1:m, j = 1:m  
         if i ==  1 || i == m || j == 1 || j == m 
             u[i,j] = g(x[i], y[j]) end end
-    n = m - 2  # number of inner points
+    n = m - 2  
     F = zeros(n,n)
     for i = 1:n, j = 1:n F[i,j] = f(x[i+1], y[j+1]) end  
     F[:,1] += u[2:n+1, 1]   / h^2
@@ -311,9 +311,9 @@ function poisson_solver(f::Function, g::Function, m::Int)
     b = vec(F) 
     A = poisson(n)
     u_inner = A \ b*h*h
-    u[2:n+1, 2:n+1] = reshape(u_inner, n, n)  # column-major order
+    u[2:n+1, 2:n+1] = reshape(u_inner, n, n)  
     return x, y, u
-end  # of poisson_solver definition
+end
 
 f(x,y) = 1.25*exp(x + y/2)
 g(x,y) = exp(x + y/2)
@@ -323,14 +323,14 @@ plot(sol, seriestype=:wireframe)
 
 # Page 187 Writing, Reading File
 
-fh = open("test.txt", "w")      # opens file in writing mode
-write(fh, "The parrot is\n")    # writes string to file
-write(fh, "a Norwegian Blue.")  # another one
-close(fh)                       # closes connection to file
+fh = open("test.txt", "w")      
+write(fh, "The parrot is\n")    
+write(fh, "a Norwegian Blue.")  
+close(fh)                       
 
-fh = open("test.txt", "r")      # opens file in reading mode
-s = read(fh, String)            # assigns file content to string s
-println(s)                      # prints s in two lines
+fh = open("test.txt", "r")      
+s = read(fh, String)            
+println(s)                      
 
      
 # Page 187 Example 8.29 Julia Set
@@ -339,8 +339,8 @@ const c = -0.8 + 0.156im
 fout = open("julia.pgm", "w")
 s = 1000
 write(fout, "P2\n# Julia Set image\n$s $s \n255\n")
-for y in range(2, stop=-2, length=s)      # Im-rows
-    for x in range(-2, stop=2, length=s)  # Re-columns
+for y in range(2, stop=-2, length=s)      
+    for x in range(-2, stop=2, length=s)  
         z = complex(x,y); n = 0 
         while (abs(z) < 2 && n < 255) z = z*z + c; n += 1 end
         write(fout, "$(255-n) ") end 

@@ -24,7 +24,6 @@ sq = @spawnat 3 begin
     return r end;
 fetch(sq) 
  
-
 r = @spawn sqrt(2.0);
 
 

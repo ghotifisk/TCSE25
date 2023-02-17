@@ -6,7 +6,7 @@ def solveq(a,b,c):
     if d < 0: return 'No real-valued solutions'
     w = sqrt(d)  
     return 1.0/(2*a)*(-b + array([w, -w]))
-print(solveq(4, -12, -40))  # Out: [5. -2.]
+print(solveq(4, -12, -40))  
 
 
 # Page 59 Example 4.2 Poisson Matrix
@@ -16,7 +16,7 @@ n = 3
 w = ones(n-1); sD = diag(w, 1) + diag(w, -1)
 I = identity(n)
 D = 4*I - sD
-A = kron(I, D) + kron(sD, -I)   # Poisson matrix
+A = kron(I, D) + kron(sD, -I)   
 
 
 # Page 62 Example 4.3 Conjugate Gradient Method
@@ -27,30 +27,31 @@ A = array([[  9.,   3.,  -6.,  12.], [  3.,  26.,  -7., -11.],
 b = array([ 18.,  11.,   3.,  73.])
 n = len(b) 
 x = zeros(n)          
-r = b.copy(); p = r.copy()           # copy to avoid side effects
-rs_old = r @ r                       # for (4) and (6) above    
-for i in range(n):                   # n steps to exact result
-    Ap = A @ p                       # matrix-vector mult.
-    alpha = rs_old / (p @ Ap)        # needed for (6) and (7) 
-    x += alpha*p                     # ... in (6)
-    r -= alpha*Ap                    # ... in (7) 
-    rs_new = r @ r                   # update residual           
-    if sqrt(rs_new) < 1e-10: break   # desired precision 
-    p = r + (rs_new / rs_old)*p      # used in (4)
-    rs_old = rs_new                  # prepare for next iteration
-print(x)                             # Out: [ 1.  1.  1.  1.]
+r = b.copy(); p = r.copy()           
+rs_old = r @ r                          
+for i in range(n):                   
+    Ap = A @ p                       
+    alpha = rs_old / (p @ Ap)         
+    x += alpha*p                     
+    r -= alpha*Ap                    
+    rs_new = r @ r                             
+    if sqrt(rs_new) < 1e-10: break   
+    p = r + (rs_new / rs_old)*p      
+    rs_old = rs_new                  
+print(x)                             
 
 # Page 65 Example 4.4 Overdetermined Linear Equation System
 
 from numpy import array
 from scipy.linalg import cholesky, solve
 A = array([[3, -6], [4, -8], [0, 1]])
-b = array([-1, 7, 2])     # ".T"  not necessary 
+b = array([-1, 7, 2])     
 C = A.T @ A 
 U = cholesky(C)
-z = solve(U.T, A.T @ b )  #  forward substitution
-x = solve(U,z)            #  backward substitution
-print(x)  # Out: array([ 5., 2.])
+z = solve(U.T, A.T @ b )  
+x = solve(U,z)            
+print(x)  
+
 
 # Page 66 Gaussian Normal Equation
 
@@ -60,7 +61,7 @@ A = array([[3, -6], [4, -8], [0, 1]])
 Q, R = qr(A, mode='economic')
 b = array([-1, 7, 2])
 gne = inv(R) @ Q.T @ b  
-print(gne)  # Out: array([ 5.,  2.])
+print(gne)
 
 
 # Page 68 Example 4.8 Sparse Poisson Matrix
@@ -70,9 +71,9 @@ n = 50
 w = ones(n-1) 
 from scipy.sparse import diags, identity, kron
 sD = diags(w, 1) + diags(w, -1)
-I = identity(n)               # overrides numpy identity 
+I = identity(n)               
 D = 4*I - sD             
-A = kron(I,D) + kron(sD, -I)  # overrides numpy kron 
+A = kron(I,D) + kron(sD, -I)  
 
 
 # Pages 69 Example 4.9 Plot Sine Function
@@ -90,7 +91,7 @@ show()
 from numpy import exp, linspace
 def f(x): return x**2*exp(-x**2)
 def dfdx(x): return 2*x*(1 - x**2)*exp(-x**2)
-xvals = linspace(0, 3)  # recall: short for linspace(0, 3, 50)
+xvals = linspace(0, 3)  
 from matplotlib.pyplot import plot, xlabel, ylabel, legend, title
 plot(xvals, f(xvals), 'r')
 plot(xvals, dfdx(xvals), 'b--')
@@ -116,8 +117,8 @@ from scipy.optimize import minimize
 def f(x): return (1 - x[0])**2 + 100*(x[1] - x[0]**2)**2
 x0 = array([1.3, 0.7])
 res = minimize(f, x0)
-print(res.x)     # Out: [0.99999552 0.99999102]
-print(f(res.x))  # Out: 2.011505248124899e-11
+print(res.x)     
+print(f(res.x))  
 
 
 # Page 75 Euler Method
@@ -150,7 +151,7 @@ u0 = [1]
 from scipy.integrate import solve_ivp 
 sol = solve_ivp(dudx, epts, u0, t_eval=xvals) 
 from matplotlib.pyplot import plot
-plot(xvals, sol.y[0])  # note: xvals = sol.t
+plot(xvals, sol.y[0])  
 
 
 # Page 76 Example 4.14 Lotka-Volterra
@@ -196,8 +197,8 @@ x = linspace(0, 1, 100)
 u = res.sol(x)[0]
 from matplotlib.pyplot import plot
 plot(x,u)
-# y_init[0] = x_init**3    # exact function value
-#y_init[1] = 3*x_init**2  # exact derivative value 
+# y_init[0] = x_init**3    
+#y_init[1] = 3*x_init**2  
 
 
 # Page 81 Example 4.17 solve_bvp
@@ -234,17 +235,17 @@ legend()
 # Page 84 Homogeneous Poisson Equation
 
 from numpy import zeros, ones, diag, identity, kron
-n = 50                    # n x n inner grid points
-h = 1/(n+1)               # distance between grid points
-u = zeros((n+2,n+2))      # grid points 0-initialized
-F = ones((n,n))           # encoding of right-hand side in (1)
+n = 50                    
+h = 1/(n+1)               
+u = zeros((n+2,n+2))      
+F = ones((n,n))           
 w = ones(n-1); sD = diag(w, 1) + diag(w, -1)
 I = identity(n)
 D = 4*I - sD
 A = kron(I,D) + kron(sD, -I)
-b = F.flatten(order='F')   # equation right-hand side needs vector
+b = F.flatten(order='F')   
 from scipy.linalg import solve
-u_inner = solve(A, b*h*h)  # solution of Lin. eq. syst. (5)
+u_inner = solve(A, b*h*h)  
 u[1:n+1,1:n+1] = u_inner.reshape(n,n, order='F') 
 from numpy import linspace, meshgrid
 lin = linspace(0, 1, n+2)
@@ -304,7 +305,7 @@ def poisson_solver(f,g,m):
     b = F.flatten(order='F') 
     u_inner = spsolve(A, b*h*h)
     u[1:n+1, 1:n+1] = u_inner.reshape(n,n, order='F') 
-    x, y = meshgrid(lin,lin)  # lin defined in line 6 
+    x, y = meshgrid(lin,lin)   
     from matplotlib.pyplot import figure, show
     fig = figure()
     ax = fig.add_subplot(projection='3d')
@@ -320,7 +321,7 @@ poisson_solver(f, g, 50)
 # Page 89 Monte Carlo Method
 
 from random import random
-samples = 1_000_000  # input,  '_' to increase readability
+samples = 1_000_000  
 hits = 0
 for _ in range(samples):
     x, y = random(), random()

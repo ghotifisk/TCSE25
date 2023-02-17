@@ -24,6 +24,7 @@ while index < 3:
     print(f"{index} times 5 is {5*index}")
     index += 1
     
+    
 # Page 27 For Loop
 
 for index in range(1,3):
@@ -39,9 +40,9 @@ print(f"The sum is {sm}")
 
 # Page 28 Example 3.3 Collatz Problem
 
-n = 100  # input
+n = 100  
 while n > 1:
-    if n % 2 == 0: n //= 2  # integer division
+    if n % 2 == 0: n //= 2  
     else: n = 3*n + 1
     print(n)
 print('reached 1')
@@ -65,12 +66,12 @@ print(eps); print(i)
 
 # Page 31 Example 3.4 Sieve of Eratosthenes
 
-n = 10                    # input upper limit
-L = list(range(2, n+1))   # constructs a list from  range()
-P = []                    # [] denotes the empty list
+n = 10                    
+L = list(range(2, n+1))   
+P = []                    
 while L != []: 
-    p = L[0]              # the smallest number still in L
-    P.append(p)           # is appended to the end of P
+    p = L[0]              
+    P.append(p)           
     for i in L:
         if i % p == 0: L.remove(i)
 print(P)
@@ -82,7 +83,7 @@ def factorial(n):
     res = 1
     for i in range(1, n+1): res *= i
     return res
-print(factorial(4))  # Out: 24
+print(factorial(4))  
 
 
 # Page 34 Example 3.6 Function as Argument
@@ -95,7 +96,7 @@ def vmax(f,n):
         if y > max_y: max_y = y
     return max_y  
 def g(x): return 4*x*(1 - x)
-print(vmax(g,7))  # Out: 0.9795918367346939
+print(vmax(g,7))  
 
 
 # Page 36 Example 3.7 Function as Return Value
@@ -105,9 +106,9 @@ def ddx(f):
     def f_prime(x): return (f(x+h) - f(x)) / h
     return f_prime
 def g(x): return 4*x*(1 - x)
-print(ddx(g)(0.3))  # Out: 1.5999960000234736
+print(ddx(g)(0.3))  
 dgdx = ddx(g)
-print(dgdx(0.5))    # Out: -4.0000225354219765e-06
+print(dgdx(0.5))    
 
 
 # Page 37 Example 3.8 Recursive Factorial
@@ -141,12 +142,12 @@ def ack(x,y):
 
 def qsort(lst):
     if lst == []: return []
-    p = lst[0]  # pivot element
+    p = lst[0]  
     sml = qsort([x for x in lst[1:] if x < p])
     grt = qsort([x for x in lst[1:] if x >= p])
     return sml + [p] + grt    
 testList = [4, 5, 7, 3, 8, 3]
-print(qsort(testList))  # out: [3, 3, 4, 5, 7, 8]
+print(qsort(testList))  
 
 
 # Page 38 Examples 3.14, 3.15 String Formatting, Interpolation
@@ -154,16 +155,16 @@ print(qsort(testList))  # out: [3, 3, 4, 5, 7, 8]
 n = 1
 fstr = f"{n} divided by 3 is {n/3}"
 print(fstr)
-# Out: 1 divided by 3 is 0.3333333333333333
 fstr = f"{n} divided by 3 is {n/3 :.4}"
 print(fstr)
-# Out: 1 divided by 3 is 0.3333
+
 
 # Page 39 Example 3.16 Number Formatting
 
-print(f"|{12.34567 :.3f}|")   # Out: '|12.346|'
-print(f"|{12.34567 :7.3f}|")  # Out: '| 12.346|'
-print(f"|{12 :3d}|")          # Out: '| 12|'
+print(f"|{12.34567 :.3f}|")   
+print(f"|{12.34567 :7.3f}|")  
+print(f"|{12 :3d}|") 
+         
    
 # Page 39 Writing Strings
 
@@ -171,6 +172,7 @@ wf = open('parrot.txt', 'w')
 wf.write('The parrot is dead!\n')
 wf.write('It is only resting.')
 wf.close()
+
 
 # Page 40 Reading Strings
 
@@ -198,34 +200,34 @@ print(in_tbl)
 # Page 42 Example 3.18 Pickle
 
 from pickle import dump, load
-tbl = [[1, 2, 3], [4, 5, 6]]  # input
+tbl = [[1, 2, 3], [4, 5, 6]]
 fwb = open('datafile.pkl', 'wb') 
-dump(tbl, fwb)  # write
+dump(tbl, fwb) 
 fwb.close()
 frb = open('datafile.pkl', 'rb')
-in_tbl = load(frb)  # read
+in_tbl = load(frb)  
 print(in_tbl)
 
      
 # Page 43 Example 3.19 Fraction Class
 
 class Fraction:
-    def __init__(self, num, den):  # initialization
-        self.num = num             # internal storage
+    def __init__(self, num, den):  
+        self.num = num            
         self.den = den     
-    def add(self, b):             # fraction addition
+    def add(self, b):             
         return Fraction(self.num * b.den + b.num * self.den, 
                         self.den * b.den ) 
      #  __add__ infix operator           
-    def isEqualTo(self, b):       # equality between fractions
+    def isEqualTo(self, b):       
         return True if self.num * b.den == self.den * b.num else False 
      # __eq__ infix operator    
 a = Fraction(3,4)
 b = Fraction(1,2)
 c = a.add(b)
-print(c.num, c.den) # 10, 8 
+print(c.num, c.den) 
 d = b.add(a)  
-print(c.isEqualTo(d))  # Out: True 
+print(c.isEqualTo(d)) 
 # c = a + b; d = b + a
 # print(c = d) 
 
@@ -233,13 +235,13 @@ print(c.isEqualTo(d))  # Out: True
 # Page 44 Example 3.20  Polynomial Class
 
 class Polynomial:
-    def __init__(self, coeff):  # data initialization
-        self.coeff = coeff      # internal storage  
-    def __call__(self, x):      # method polynomial application
+    def __init__(self, coeff):  
+        self.coeff = coeff      
+    def __call__(self, x):      
         s = 0
         for i in range(len(self.coeff)): s += self.coeff[i] * x**i
         return s   
-    def __add__(self, q):   # method polynomial addition
+    def __add__(self, q):   
         l = []
         if len(self.coeff) > len(q.coeff):
             l += self.coeff   
@@ -248,7 +250,7 @@ class Polynomial:
             l += q.coeff
             for i in range(len(self.coeff)): l[i] += self.coeff[i]
         return Polynomial(l) 
-    def __mul__(self, q):   # method polynomial multiplication
+    def __mul__(self, q):  
         d1, d2 = len(self.coeff), len(q.coeff)
         l = [0 for i in range(d1 + d2 - 1)]
         for i in range(d1):
@@ -260,7 +262,7 @@ class Polynomial:
         for i in range(d):
             if abs(self.coeff[i] - q.coeff[i]) > 1.e-14: return False
         return True  
-    def __add__(self, q):  # method polynomial addition
+    def __add__(self, q):  
         lst = []
         if len(self.coeff) > len(q.coeff):
             lst += self.coeff   
@@ -271,7 +273,7 @@ class Polynomial:
             for i in range(len(self.coeff)): 
                 lst[i] += self.coeff[i]
         return Polynomial(lst)
-    def __mul__(self, q):  # method polynomial multiplication
+    def __mul__(self, q):
         d1, d2 = len(self.coeff), len(q.coeff)
         lst = [0 for i in range(d1 + d2 - 1)]
         for i in range(d1):
@@ -286,10 +288,10 @@ class Polynomial:
                 return False
         return True       
 p = Polynomial([1, 2, 3])
-print(p(4))  # Out: 57
+print(p(4))
 q = Polynomial([3,4,5])
 r = Polynomial([6,7,8,9])
-print(p*(q + r) == p*q + p*r)  # Out: True 
+print(p*(q + r) == p*q + p*r) 
 
         
 # Page 47 Parabola Class
@@ -307,5 +309,5 @@ class Parabola(Polynomial):   # subclass, needs code above
         l = [0, 0, 0]
         for i in range(3): l[i] += self.coeff[i] + q.coeff[i]
         return Parabola(l)      
-# >>> p = Parabola([1, 2, 3])
-# >>> (p + p).roots()) Out: To be implemented
+# p = Parabola([1, 2, 3])
+# (p + p).roots()) Out: To be implemented
