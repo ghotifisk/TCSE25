@@ -16,6 +16,8 @@ for _ in range(epochs):
 print(w, b)  
 
 
+# Page 364 Example 16.4 Backtracking  
+
 from torch import tensor
 x = tensor(3., requires_grad=True)
 y = x**2; z = 3*y
@@ -27,7 +29,7 @@ v.backward()
 x.grad 
 
 
-# Page 363 Example 16.5 Automatic Differentiation
+# Page 365 Example 16.5 Automatic Differentiation
 
 from torch import tensor, no_grad 
 from torch.nn import MSELoss
@@ -134,7 +136,7 @@ for _ in range(20):
 print(x.detach())  
 
 
-# Page 372 Example 16.11
+# Page 372 Example 16.11 Equation Systems
 
 from torch import tensor, optim 
 x = tensor(1., requires_grad=True)
@@ -148,7 +150,7 @@ for _ in range(300):
 print(x.detach(), y.detach()) 
 
 
-# Page 372 Example 16.12 Matrix Equation
+# Page 373 Example 16.12 Matrix Equation
 
 from torch import tensor, zeros, optim, mm
 from torch.nn import MSELoss
@@ -168,7 +170,7 @@ for e in range(1_000):
 print(x.detach().T)  
 
 
-# Page 372 Example 16.12 MSELoss
+# Page 374 Example 16.13 MSELoss
 
 from torch import tensor, zeros, optim, mm
 from torch.nn import MSELoss
@@ -188,7 +190,7 @@ for _ in range(5_000):
 print(x.detach().T) 
 
 
-# Page 372 Example 16.14 Descent along Quadratic Form
+# Page 375 Example 16.14 Descent along Quadratic Form
 
 from torch import tensor, zeros, optim, mm
 A = tensor([[ 9.,  3., -6., 12.], [ 3.,  26., -7., -11.],
@@ -302,7 +304,7 @@ ax = fig.add_subplot(projection='3d')
 ax.plot_surface(X, Y, Z - Z_ex, cmap="jet") 
 
 
-# Page 385 Example 16.25
+# Page 385 Example 16.25 Derivation at Point
 
 from torch import tensor, autograd
 x = tensor(1., requires_grad=True)
@@ -321,7 +323,7 @@ dudx, = autograd.grad(u, x, grad_outputs = v)
 print(dudx)  
 
 
-# Page Example 16.27 2st Derivative
+# Page 386 Example 16.27 2nd Derivative
 # Note: Original Book Example Corrected  
 
 from torch import tensor, autograd
@@ -334,7 +336,7 @@ d2udx2, = autograd.grad(dudx, x, grad_outputs = v)
 print(d2udx2)
 
 
-# Page Definition 16.28 "diff, diff2" Operators
+# Page 386 Definition 16.28 "diff, diff2" Operators
 # to be stored in "derivate.py" 
 
 def diff(u, x):
@@ -352,10 +354,8 @@ def diff2(u,x): return diff(diff(u,x), x)
 
 from torch import linspace, atan
 from derivate import diff, diff2
-
 x = linspace(-6., 6., 100).unsqueeze(1)
 x.requires_grad=True
-
 u = atan(x)           
 dudx = diff(u, x)     
 d2udx2 = diff2(u, x)  
@@ -645,7 +645,7 @@ for _ in range(6_000):
 print(preds.detach().T)
 
 
-# Page 407 Digit Recognition
+# Page 407 MNIST Digit Recognition
 # Runtime on Test-Machine 1.5 Min
 
 from torch import optim, utils
