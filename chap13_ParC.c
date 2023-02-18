@@ -108,7 +108,7 @@ int main() {
             if (sqrt(rs_new) < 1e-6) break;
             for (int i = 0; i < n; i++) 
                 p[i] = r[i] + (rs_new / rs_old)*p[i];
-            rs_old = rs_new; } }   // end if, end iteration loop
+            rs_old = rs_new; } }   
     if (rank == 0)  {
         for (int i = 0; i < n; i++)  printf("%f ", x[i]);
         printf("\n"); }
@@ -223,7 +223,7 @@ int main() {
     float a[n], b[n];
     for (int i=0; i < n; i++){ 
         a[i] = i; b[i] = n-i; }
-    float a_dot_b = omp_dot(n, a, b);  // computed in parallel 
+    float a_dot_b = omp_dot(n, a, b);   
     printf("%f\n", a_dot_b); }
     
     
@@ -252,7 +252,7 @@ int main() {
 #include <stdio.h>
 #include <mpi.h>
 float f(float x) { return 4.0/(1.0 + x*x); }
-float omp_partial_pi(int n, int start, int step) {  // shared 
+float omp_partial_pi(int n, int start, int step) {   
     float h = 1.0/n;
     float sum = 0.0;
     #pragma omp parallel for reduction(+:sum)
@@ -267,7 +267,7 @@ int main() {
     int n;
     if (rank == 0) n = 10; 
     MPI_Bcast(&n, 1, MPI_INT, 0, MPI_COMM_WORLD);
-    float pi_loc = omp_partial_pi(n, rank, size);  // shared  
+    float pi_loc = omp_partial_pi(n, rank, size);  
     float pi;
     MPI_Reduce(&pi_loc, &pi, 1, MPI_FLOAT, 
                MPI_SUM, 0, MPI_COMM_WORLD);

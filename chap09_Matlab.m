@@ -1,45 +1,45 @@
 % Page 195 Vectors
 
-v = [1 2 3 4]   % v = 1 2 3 4 
-w = 1 : 4       % v = 1 2 3 4
-x = 1: -0.3: 0  % x = 1.0000 0.7000 0.4000 0.1000 
+v = [1 2 3 4]   
+w = 1 : 4       
+x = 1: -0.3: 0  
 
 
 % Page 195 Colon Operator
 
-x = 1: ‐0.3: 0 % x = 1.0000 0.7000 0.4000 0.1000
+x = 1: ‐0.3: 0 
 
 
 % Page 196 linspace
 
-linspace(-1, 1, 5)  % ans = -1.0000 -0.5000 0 0.5000 1.0000
+linspace(-1, 1, 5)  
 
 
 % Page 196 Dynamic Vector Extension
 
 v = [1 2]
-v(5) = 1  % v = 1 2 0 0 1
+v(5) = 1  
 clear w
-w(3) = 1  % w = 0 0 1
+w(3) = 1  
 
 
 % Page 196 Logical Arrays, Comparison Operators
 
 x = [-1 2 3];
-x > 0  % ans = 1×3 logical array  0  1  1
+x > 0  
 
-b = [false true true]  % 1×3 logical array 0  1  1
+b = [false true true]  
 
 x = [true false true]; y = [true true false];
-~x      % 1×3 logical array  0  1  0
-x & y   % 1×3 logical array  1  0  0
-x | y   % 1×3 logical array  1  1  1
+~x      
+x & y   
+x | y   
 
 
 % Page 196 Vector of Length 1  Identified with  Content 
 
 x = 1; y = [1]; 
-x == y  % ans = logical 1
+x == y  
 
 
 % Page 197 Matrix
@@ -60,8 +60,8 @@ A = [1 2 3 4; 5 6 7 8; 9 10 11 12; 13 14 15 16]; A(3:4,2:3)
 
 % Page 198 Special Vectors
 
-ones(1,3)  % row vector
-ones(3,1)  % column vector
+ones(1,3)  
+ones(3,1)  
 
 
 % Page 198 Hilbert Matrix Inverse
@@ -79,13 +79,13 @@ C*B
 % Page 199 Elementwise Operations
 
 A = [1 2; 3 4]; B = [5 6; 7 8]; 
-A .* B  % ans = [5 12; 21 32]    
-A.^2    % ans = [1  4;  9 16]
-A ./ B  % ans = [0.2000 0.3333; 0.4286 0.5000]
-A .\ B  % ans = [5.0000 3.0000; 2.3333 2.0000]
+A .* B     
+A.^2    
+A ./ B  
+A .\ B  
 
 v = [2 3];
-1 ./ v  % ans = [0.5000 0.3333]
+1 ./ v  
 
 
 % Page 200 One-Line Conditional
@@ -150,7 +150,7 @@ type scriptdemo
 scriptdemo 
 
 
-% Page 205 Function File mv.m
+% Page 205 Function File "mv.m"
 
 %%% This function calculates the mean of a vector
 function m  = mv(x)
@@ -161,11 +161,11 @@ x = [1 2 3 4 5 6];
 mv(x) 
 
 
-% Page 205 Function File stat.m
+% Page 205 Function File "stat.m"
 
 function [m,s] = stat(x)
 n = length(x);
-m = avg(x,n);  % subfunction defined below
+m = avg(x,n);  
 s = sqrt(sum((x - m).^2)/n);
 
 function m = avg(x,n)
@@ -175,7 +175,7 @@ x = 1 : 100;
 [mv, stddev] = stat(x)  
 
 
-% Page 205  Function as Argument
+% Page 205 Function as Argument
 
 function plotfunc(f,x)
 y = feval(f,x);
@@ -297,13 +297,13 @@ plot(x,u);
 
 % Page 213  Poisson Equation
 
-n = 100;  % n x n inner grid points
+n = 100;  
 h = 1/(n+1);
-u = zeros(n+2);  % recall: square matrix, unlike Python 
+u = zeros(n+2);   
 A = gallery('poisson', n);  
 b = ones(n*n, 1);           
 u_inner = (A/h^2) \ b;  
 u(2:n+1, 2:n+1) = reshape(u_inner, n, n);  
 lin = linspace(0, 1, n+2); 
-[x y] = meshgrid(lin);  % grid 
+[x y] = meshgrid(lin);  
 mesh(x, y, u, 'LineWidth', 2);

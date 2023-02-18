@@ -170,6 +170,7 @@ unassign('H5'):
 H5 := Matrix(5, 5, (i,j) -> 1/(i+j-1), shape=symmetric):
 Eigenvalues(evalf(H5));
 
+
 # Page 230 Derivation
 
 f := x -> a*x^2:
@@ -179,7 +180,7 @@ f_prime := x -> limit(delta_f(x,h), h = 0):
 restart;
 diff(x*sin(cos(x)),x)
 
-w := (x,y) -> sin(y - a*x):  # example function
+w := (x,y) -> sin(y - a*x):  
 diff(w(x,y), x);          
 diff(diff(w(x,y), x), x);
 diff(w(x,y), x, x);
@@ -203,7 +204,7 @@ int(1/s, s = 1..x) assuming x > 0;
 
 # Page 232 Example 10.9 Inner Product and Orthogonal Functions
 
-int(sin(x)*cos(x), x = 0...Pi);  # Out: 0
+int(sin(x)*cos(x), x = 0...Pi);
 sqrt(int(sin(x)*sin(x), x = 0...Pi)); 
 
 
@@ -217,7 +218,7 @@ pts := <x_vec | y_vec>:
 with(CurveFitting):
 spl3 := Spline(pts, x);
 splplot := plot(spl3, x = 0..1):
-with(plots):  # contains pointplot, display 
+with(plots):  
 ptsplot := pointplot(pts, symbol=solidcircle, symbolsize=15, color=black):
 display(splplot, ptsplot);
 
@@ -278,9 +279,9 @@ restart;
 myeuler := proc(f, u0, n)
     local dx, pts, i:
     dx := 1/n:      
-    pts := Matrix(n+1,2):  # to store (x,u)-pairs
-    pts[1,1] := 0:         # start of x-intverval
-    pts[1,2] := u0:        # initial u-value 
+    pts := Matrix(n+1,2):  
+    pts[1,1] := 0:         
+    pts[1,2] := u0:        
     for i from 1 to n do    
         pts[i+1,1] := pts[i,1] + dx:
         pts[i+1,2] := pts[i,2] + f(pts[i,1], pts[i,2])*dx end do:
@@ -288,7 +289,7 @@ myeuler := proc(f, u0, n)
 end proc:
 f := (x,u) -> u / (1 + x^2):
 u_eul := myeuler(f, 1, 10):
-with(plots):  # contains the function pointplot
+with(plots):  
 plot1 := pointplot(u_eul, symbolsize=15):
 ode := diff(u(x), x) = u(x)/(1 + x^2):
 ic := u(0) = 1:
