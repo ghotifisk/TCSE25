@@ -241,7 +241,6 @@ file << mesh
 
 # Page 351 Application Example
 
-
 from dolfin import *
 mesh = Mesh('annulus.xml')
 V = FunctionSpace(mesh, 'CG', 1)

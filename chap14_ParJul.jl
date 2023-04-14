@@ -108,6 +108,7 @@ println("$v, $sv")
 
 # Page 314 Example 14.8 Laplace Equation
 
+using SharedArrays 
 n = 10;
 S = SharedMatrix{Float64}((n,n));
 x = collect(range(0, stop=1, length=n));

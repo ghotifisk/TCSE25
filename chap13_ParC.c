@@ -1,10 +1,10 @@
-(* Page 292 Hello World *)
+// Page 292 Hello World  
 
 #include <stdio.h>
 int main() { printf("Hello World\n"); }
 
 
-(* Page 292 Example 13.1 Pi Integral Approximation *)
+// Page 292 Example 13.1 Pi Integral Approximation  
 
 #include <mpi.h>
 #include <stdio.h>
@@ -32,7 +32,7 @@ int main() {
     MPI_Finalize(); }  
     
     
-(* Page 294 Example 13.2 Sequence Average *)
+// Page 294 Example 13.2 Sequence Average 
     
 #include <mpi.h>
 #include <stdio.h>
@@ -63,7 +63,7 @@ int main() {
     MPI_Finalize(); }
     
     
-(* Page 295 Example 13.3 Conjugate Gradient *)   
+// Page 295 Example 13.3 Conjugate Gradient 
 
 #include <stdio.h>
 #include <mpi.h>
@@ -115,7 +115,7 @@ int main() {
     MPI_Finalize(); }
 
 
-(* Page 298 Example 13.4 OMP Hello World  *) 
+// Page 298 Example 13.4 OMP Hello World  
 
 #include <stdio.h>
 #include <omp.h>
@@ -126,7 +126,7 @@ int main() {
            omp_get_thread_num(), omp_get_num_threads()); } }
            
                      
-(* Page 299 Example 13.5 OMP Broadcast, Naive *)
+// Page 299 Example 13.5 OMP Broadcast, Naive 
 
 #include <stdio.h>
 #include <omp.h>
@@ -138,7 +138,7 @@ int main() {
     printf("\n"); }
     
        
-(* Page 299, 300 Example 13.5, 13.6 OMP Broadcast, "barrier" Directive *)
+// Page 299, 300 Example 13.5, 13.6 OMP Broadcast, "barrier" Directive 
 
 #include <stdio.h>
 #include <omp.h>
@@ -151,7 +151,7 @@ int main() {
     printf("\n"); }
     
     
-(* Page 301 Example 13.7 OMP Summation, Naive *)
+// Page 301 Example 13.7 OMP Summation, Naive 
 
 #include <stdio.h>
 int main() {
@@ -164,7 +164,7 @@ int main() {
     printf("%d\n", sum); }
     
     
-(* Page 301, 302  OMP Summation, "critical", "atomic" Directives *)
+// Page 301, 302  OMP Summation, "critical", "atomic" Directives 
 
 #include <stdio.h>
 int main() {
@@ -179,7 +179,7 @@ int main() {
     printf("%d\n", sum); }
     
 
-(* Page 303 "reduction" Clause *)
+// Page 303 "reduction" Clause 
 
 #include <stdio.h>
 int main() {
@@ -192,7 +192,7 @@ int main() {
     printf("%d\n", sum); }
     
     
-(* Page 303 Example 13.8 Pi Integral Approximation *)
+// Page 303 Example 13.8 Pi Integral Approximation 
 
 #include <stdio.h>
 float f(float x) { return 4.0/(1.0 + x*x); }
@@ -210,7 +210,7 @@ int main() {
             printf("%f\n", sum); } }  
             
             
-(* Page 304 Example 13.9 Vector Product *)
+// Page 304 Example 13.9 Vector Product 
 
 #include <stdio.h>
 float omp_dot(int n, float v[], float w[]) {
@@ -227,7 +227,7 @@ int main() {
     printf("%f\n", a_dot_b); }
     
     
-(* Page 305 Example 13.10 Fibonacci Function *)
+// Page 305 Example 13.10 Fibonacci Function 
 
 int fib(int n) {
     int i, j;
@@ -247,7 +247,7 @@ int main() {
             printf("%d\n",fib(n)); } } 
             
             
-(* Page 305 Hybrid MPI-OMP Pi Approximation *)
+// Page 305 Hybrid MPI-OMP Pi Approximation  
 
 #include <stdio.h>
 #include <mpi.h>
